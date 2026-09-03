@@ -13,8 +13,6 @@
 <section class="hero"><p class="eyebrow">Charity Means Love Foundation</p><h1>Community Developer Roundtable End-of-Session Survey</h1><p><strong>Anonymous feedback</strong></p><p>These same core questions are used after every session to help us track repeated barriers, what developers need next, and whether the roundtable is helping people become better connected and more able to navigate development in Newport News.</p><span class="time">About 2 to 3 minutes</span></section>
 <div class="note"><strong>This survey is anonymous.</strong> Please complete it before leaving. Your responses will be combined with other participants' responses for monthly and multi-session analysis.</div>
 <form id="surveyForm">
-<input type="hidden" name="formType" value="sessionSurvey">
-<input type="hidden" name="submissionMethod" value="Digital">
 <fieldset><legend>Session</legend>
 <div class="q"><label class="title" for="sessionDate">1. Session date <span class="required">*</span></label><input id="sessionDate" name="sessionDate" type="date" required></div>
 </fieldset>
@@ -42,5 +40,46 @@ const ENDPOINT="https://script.google.com/macros/s/AKfycbywfJzJJhgXqJeLShAl2qqie
 const dateInput=document.getElementById('sessionDate');
 const now=new Date(); const local=new Date(now.getTime()-now.getTimezoneOffset()*60000); dateInput.value=local.toISOString().slice(0,10);
 const form=document.getElementById('surveyForm'),btn=document.getElementById('submitBtn'),status=document.getElementById('status');
-form.addEventListener('submit',async e=>{e.preventDefault();btn.disabled=true;btn.textContent='Submitting...';status.style.display='none';try{const data=new FormData(form);await fetch(ENDPOINT,{method:'POST',body:data,mode:'no-cors'});form.reset();dateInput.value=local.toISOString().slice(0,10);status.className='ok';status.textContent='Thank you. Your anonymous survey has been submitted.';status.style.display='block';window.scrollTo({top:0,behavior:'smooth'});}catch(err){status.className='err';status.textContent='We could not submit your survey. Please try again or use a paper survey.';status.style.display='block';}finally{btn.disabled=false;btn.textContent='Submit Anonymous Survey';}});
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  btn.disabled=true; btn.textContent='Submitting...'; status.style.display='none';
+  try{
+    const raw=new FormData(form);
+    const payload=new FormData();
+    payload.set('name','__SESSION_SURVEY__');
+    payload.set('organization',raw.get('sessionDate')||'');
+    payload.set('email','Digital');
+    payload.set('phone',raw.get('issueClarity')||'');
+    payload.set('roles',raw.get('nextStepConfidence')||'');
+    payload.set('relationships',raw.get('mostImportantIssue')||'');
+    payload.set('projectDescription',raw.get('similarExperience')||'');
+    payload.set('unitCount',raw.get('similarIssue')||'');
+    payload.set('developmentTypes',raw.get('supportNeed')||'');
+    payload.set('barriers',raw.get('helpfulConnection')||'');
+    payload.set('topBarrier',raw.get('nextTopic')||'');
+    payload.set('projectImpacted',raw.get('participateAgain')||'');
+    payload.set('impactDescription',raw.get('workOnIssue')||'');
+    payload.set('addedCost',raw.get('issueToWorkOn')||'');
+    payload.set('addedTime',raw.get('navigationAbility')||'');
+    payload.set('supports','');
+    payload.set('oneChange','');
+    payload.set('workingWell','');
+    payload.set('otherCities','');
+    payload.set('expertise','');
+    payload.set('helpRequested','');
+    payload.set('futureRoundtables','');
+    payload.set('followUp','');
+    payload.set('aggregatePermission','Yes');
+    payload.set('attributionPermission','No');
+    payload.set('source',location.href);
+    await fetch(ENDPOINT,{method:'POST',body:payload,mode:'no-cors'});
+    form.reset(); dateInput.value=local.toISOString().slice(0,10);
+    status.className='ok'; status.textContent='Thank you. Your anonymous survey has been submitted.'; status.style.display='block';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }catch(err){
+    status.className='err'; status.textContent='We could not submit your survey. Please try again or use a paper survey.'; status.style.display='block';
+  }finally{
+    btn.disabled=false; btn.textContent='Submit Anonymous Survey';
+  }
+});
 </script></body></html>
