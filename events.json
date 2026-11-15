@@ -1,0 +1,38 @@
+{
+  "timezone": "America/New_York",
+  "contactEmail": "charitymeanslovefoundation@gmail.com",
+  "recurrence": {
+    "weekday": 3,
+    "startTime": "17:00",
+    "endTime": "18:00",
+    "venue": "Location to be announced",
+    "address": "",
+    "description": "Join local developers and community partners to share project questions, resources, and practical next steps. Location and session details will be announced here once confirmed."
+  },
+  "overrides": {
+    "2026-12-02": {
+      "date": "2026-12-02",
+      "title": "December learning visit: Tranquility at the Lakes II",
+      "startTime": "17:00",
+      "endTime": "18:30",
+      "endTimeConfirmed": false,
+      "confirmed": true,
+      "venue": "Tranquility at the Lakes II",
+      "address": "5827 Burton Station Road, Virginia Beach, VA",
+      "parking": "Meet at the host's arrival address above. Angela will direct us to street parking between the two buildings.",
+      "description": "Close out the year with an in-person tour and conversation with Angela Whitehead. We will visit both buildings, gather in the meeting space, and learn from a completed affordable senior housing development. Refreshments will be provided.",
+      "timeNote": "Starts at 5:00 p.m. Eastern. The group recap allows until 6:30 p.m.; the final end time is being confirmed with our host.",
+      "why": "Following its October 30 grand opening, this visit lets us see the homes and high-quality finishes, celebrate the team's milestone, and bring useful ideas back to projects on the Peninsula.",
+      "highlights": [
+        "Community roots: the project responds to aging residents' needs in historic Burton Station, a community established by formerly enslaved people.",
+        "Affordable homes: 38 new senior apartments beside the original 40-home community, co-developed by Seniors Unlimited Lifestyles and Virginia Beach Community Development Corporation. Phase II serves residents earning up to 60% of area median income.",
+        "Quality and independence: universal design, five fully accessible apartments, elevator access, gathering spaces, laundry on each floor, and individual Wi-Fi.",
+        "Lessons for our projects: bring questions about financing, partnerships, approvals, and how affordable rents and quality finishes fit together."
+      ],
+      "pricingNote": "Advertised base rents checked November 15, 2026: $1,097–$1,430 per month for one- and two-bedroom homes, plus fees. Eligibility, availability, and pricing may change.",
+      "projectUrl": "https://vibrantcommunities.us/news/tranquility2",
+      "pricingUrl": "https://www.apartments.com/tranquility-at-the-lakes-ii-senior-living-virginia-beach-va/94sgwv6/",
+      "updated": "2026-11-15"
+    }
+  }
+}
